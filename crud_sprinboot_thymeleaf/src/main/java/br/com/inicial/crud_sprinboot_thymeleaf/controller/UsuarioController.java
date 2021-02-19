@@ -8,9 +8,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.inicial.crud_sprinboot_thymeleaf.dto.RequisicaoUsuario;
+import br.com.inicial.crud_sprinboot_thymeleaf.model.Categoria;
 import br.com.inicial.crud_sprinboot_thymeleaf.model.Usuario;
 import br.com.inicial.crud_sprinboot_thymeleaf.repository.UsuarioRepository;
 
@@ -35,13 +36,20 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("addUsuario")
-	public String addUsuario(@Valid RequisicaoUsuario requisicao, BindingResult result) {
+	public String addUsuario(@Valid RequisicaoUsuario requisicao, BindingResult result, RedirectAttributes attributes) {
+		
+		Usuario usuario = new Usuario();
 		
 		if (result.hasErrors()) {
 			return "form-cadastro";
 		}
+		usuario = requisicao.toUsuario();
+		/*Categoria padrao para novo usuario, apenas o perfil de adm pode alterar e categoria*/
+		usuario.setCategoria(Categoria.USUARIO);
+		repository.save(usuario);
 		
-		return "login";
+		attributes.addFlashAttribute("mensagem", "Cadastro efetuado com sucesso");
+		return "redirect:/";
 	}
 
 }

@@ -8,9 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Data;
-
-@Data //anotação do lombok que gera os métodos gets e sets automático
 @Entity //entidade para mapeamento do jpa
 public class Usuario {
 	
@@ -24,7 +21,7 @@ public class Usuario {
 	@Column(nullable = false, unique = true)	
 	private String email;
 	@Enumerated(EnumType.ORDINAL)
-	private Categoria categoria;
+	private Categoria categoria ;
 	
 	public Long getId() {
 		return id;

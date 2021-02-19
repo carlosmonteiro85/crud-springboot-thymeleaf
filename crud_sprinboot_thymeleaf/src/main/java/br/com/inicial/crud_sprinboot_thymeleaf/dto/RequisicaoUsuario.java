@@ -16,7 +16,7 @@ public class RequisicaoUsuario {
 	private String senha;
 	@NotBlank
 	private String email;
-	@NotBlank
+	
 	private Categoria categoria;
 	
 	public String getNome() {
@@ -48,7 +48,7 @@ public class RequisicaoUsuario {
 		Usuario usuario = new Usuario();
 		usuario.setNome(nome);
 		usuario.setSenha(senha);
-		usuario.setSenha(senha);
+		usuario.setEmail(email);
 		usuario.setCategoria(categoria);
 		return usuario;
 	}
