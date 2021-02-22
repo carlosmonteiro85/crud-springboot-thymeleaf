@@ -10,19 +10,6 @@
 
 </head>
 <body>
-
-<!-- 		<div class="alert alert-sucess" th:text="${mensagem}"  -->
-<!-- 		th:if="${not #string.isEmpty(mensagem)}"></div> -->
-										<!-- Alerat de Confirmação -->
-
-<!-- 	<div class="alert alert-warning alert-dismissible fade show" -->
-<!-- 		role="alert"> -->
-<!-- 		<strong>Holy guacamole!</strong> You should check in on some of those -->
-<!-- 		fields below. -->
-<!-- 		<button type="button" class="btn-close" data-bs-dismiss="alert" -->
-<!-- 			aria-label="Close"></button> -->
-<!-- 	</div> -->
-
 	<div class="container">
 		<div class="jumbotron mb-5">
 			<h1 class="display-4 nav justify-content-center mt-3">Cadastro</h1>
@@ -31,25 +18,34 @@
 			<div class="container">
 				<div class="mb-3 mt-3">
 					<label for="exampleFormControlInput1" class="form-label ">Nome
-					</label> <input  th:field="*{nome}" type="text"
+					</label> <input  th:field="*{nome}" th:errorclass="is-invalid" type="text"
 						class="form-control" id="exampleFormControlInput1"
 						placeholder="Digite seu nome"> <small>Informe o
 						seu nome </small>
+						<div th:errors="*{nome}" class="invalid-feedback">
+						Error
+					</div>	
 				</div>
 				<div class="mb-3 ">
 					<label for="exampleFormControlTextarea1" class="form-label">Senha</label>
-					<input type="password" th:field="*{senha}"
+					<input type="password" th:field="*{senha}" th:errorclass="is-invalid" 
 						class="form-control" id="exampleFormControlInput1"
 						placeholder="Digite sua senha"> <small>Informe o
 						sua senha </small>
+						<div th:errors="*{senha}" class="invalid-feedback">
+						Error
+					</div>
 				</div>
 
 				<div class="mb-5 ">
 					<label for="exampleFormControlTextarea1" class="form-label">Email</label>
-					<input type="email" th:field="*{email}"
+					<input type="email" th:field="*{email}" th:errorclass="is-invalid" 
 						class="form-control" id="exampleFormControlInput1"
 						placeholder="Digite seu email"> <small>Informe o
 						seu email </small>
+						<div th:errors="*{email}" class="invalid-feedback">
+						Error
+					</div>
 				</div>
 
 				<div class="nav justify-content-center mb-3">
