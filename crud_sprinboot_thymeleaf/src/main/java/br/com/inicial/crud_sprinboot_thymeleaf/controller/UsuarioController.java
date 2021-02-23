@@ -49,7 +49,7 @@ public class UsuarioController {
 		repository.save(usuario);
 		
 		attributes.addFlashAttribute("mensagem", "Cadastro efetuado com sucesso");
-		return "redirect:/";
+		return "redirect:/login";
 	}
 
 }

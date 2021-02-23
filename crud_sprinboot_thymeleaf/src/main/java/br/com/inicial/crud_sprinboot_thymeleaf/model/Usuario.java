@@ -13,7 +13,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Gera a chave privaria auto incrementada
-	private Long id;
+	private String login;
 	@Column(nullable = false) // atributo não pode ser null
 	private String nome;
 	@Column(nullable = false)
@@ -23,11 +23,11 @@ public class Usuario {
 	@Enumerated(EnumType.ORDINAL)
 	private Categoria categoria ;
 	
-	public Long getId() {
-		return id;
+	public String getLogin() {
+		return login;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	public String getNome() {
 		return nome;

@@ -7,7 +7,7 @@ import br.com.inicial.crud_sprinboot_thymeleaf.dto.RequisicaoUsuario;
 @Controller
 public class HomeController {
 
-	@RequestMapping("/")
+	@RequestMapping("login")
 	public String formLogin(RequisicaoUsuario requisicao) {
 		System.out.println("Abrindo tela de login");
 		return "login";
@@ -17,6 +17,11 @@ public class HomeController {
 	public String formCadastro(RequisicaoUsuario requisicao) {
 		System.out.println("Abrindo Formulario de Cadastro");
 		return "form-cadastro";
+	}
+	
+	@RequestMapping("/")
+	public String login(RequisicaoUsuario requisicao) {
+		return "redirect:/login";
 	}
 	
 }
