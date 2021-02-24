@@ -27,7 +27,7 @@ public class UsuarioController {
 		return repository.findAll();
 	}
 
-	@PostMapping()
+	@PostMapping("/logando")
 	public String autenticando(@Valid RequisicaoUsuario requisicao, BindingResult result) {
 		if (result.hasErrors()) {
 			return "login";
