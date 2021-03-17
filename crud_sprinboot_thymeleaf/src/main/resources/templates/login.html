@@ -22,25 +22,25 @@
 		<div class="jumbotron mb-5">
 			<h1 class="display-4 nav justify-content-center mt-3">Login</h1>
 		</div>
-		<form action="" method="post">
+			<form th:action="@{/login}" method="post">
 			<!-- 			<form th:object="${requisicaoUsuario}" action="/login" method="post"> -->
 			<div class="container">
 				<div class="mb-3 mt-3">
 					<label for="exampleFormControlInput1" class="form-label ">Email
-					</label> <input type="email" class="form-control" id=""
+					</label> <input type="text" name="username" class="form-control" id=""
 						placeholder="Digite seu email"> <small>Informe o
 						seu email</small>
 				</div>
 				<div class="mb-5 ">
 					<label for="exampleFormControlTextarea1" class="form-label">Senha</label>
-					<input type="password" class="form-control"
+					<input type="password" class="form-control" name="password" 
 						id="exampleFormControlInput1" placeholder="Digite sua senha Senha"><small>Informe
 						sua senha</small>
 				</div>
 
 				<div class="nav justify-content-center mb-3">
 					<div>
-						<button type="button" class="btn btn-primary btn-lg">Entrar</button>
+						<button type="submit" class="btn btn-primary btn-lg">Entrar</button>
 					</div>
 				</div>
 

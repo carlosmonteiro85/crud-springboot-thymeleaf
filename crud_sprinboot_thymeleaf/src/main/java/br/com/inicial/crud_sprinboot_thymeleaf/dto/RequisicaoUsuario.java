@@ -6,14 +6,14 @@ package br.com.inicial.crud_sprinboot_thymeleaf.dto;
 import javax.validation.constraints.NotBlank;
 
 import br.com.inicial.crud_sprinboot_thymeleaf.model.Categoria;
-import br.com.inicial.crud_sprinboot_thymeleaf.model.Usuario;
+import br.com.inicial.crud_sprinboot_thymeleaf.model.User;
 
 public class RequisicaoUsuario {
 
 	@NotBlank
 	private String nome;
 	@NotBlank
-	private String senha;
+	private String password;
 	@NotBlank
 	private String email;
 	
@@ -25,11 +25,11 @@ public class RequisicaoUsuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getEmail() {
 		return email;
@@ -44,10 +44,10 @@ public class RequisicaoUsuario {
 		this.categoria = categoria;
 	}
 	
-	public Usuario toUsuario() {
-		Usuario usuario = new Usuario();
+	public User toUsuario() {
+		User usuario = new User();
 		usuario.setNome(nome);
-		usuario.setSenha(senha);
+		usuario.setPassworda(password);
 		usuario.setEmail(email);
 		usuario.setCategoria(categoria);
 		return usuario;
