@@ -1,67 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-	crossorigin="anonymous">
-
+<!doctype html>
+<html lang="en">
+<head th:replace="~{base :: head2}">
+<link href="/css/navbar.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<div class="jumbotron mb-5">
-			<h1 class="display-4 nav justify-content-center mt-3">Cadastro</h1>
-		</div>
-		<form th:object="${requisicaoUsuario}" action="/usuario/addUsuario" method="post">
-			<div class="container">
-				<div class="mb-3 mt-3">
-					<label for="exampleFormControlInput1" class="form-label ">Nome
-					</label> <input  th:field="*{nome}" th:errorclass="is-invalid" type="text"
-						class="form-control" id="exampleFormControlInput1"
-						placeholder="Digite seu nome"> <small>Informe o
-						seu nome </small>
-						<div th:errors="*{nome}" class="invalid-feedback">
-						Error
-					</div>	
-				</div>
-				<div class="mb-3 ">
-					<label for="exampleFormControlTextarea1" class="form-label">Senha</label>
-					<input type="password" th:field="*{password}" th:errorclass="is-invalid" 
-						class="form-control" id="exampleFormControlInput1"
-						placeholder="Digite sua senha"> <small>Informe o
-						sua senha </small>
-						<div th:errors="*{password}" class="invalid-feedback">
-						Error
+	<main>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light rounded"
+				aria-label="Twelfth navbar example">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse justify-content-md-center"
+						id="navbarsExample10">
+						<h2>Crud Básico</h2>
 					</div>
 				</div>
+			</nav>
 
-				<div class="mb-5 ">
-					<label for="exampleFormControlTextarea1" class="form-label">Email</label>
-					<input type="email" th:field="*{email}" th:errorclass="is-invalid" 
-						class="form-control" id="exampleFormControlInput1"
-						placeholder="Digite seu email"> <small>Informe o
-						seu email </small>
-						<div th:errors="*{email}" class="invalid-feedback">
-						Error
+			<div>
+				<div class="bg-light p-5 rounded">
+					<div class="col-sm-8 mx-auto">
+						<h1>Cadastro</h1>
+						<p>
+						<div>
+							<form th:object="${userDTO}" action="/add" method="post">
+								<div class="form-floating">
+									<input th:field="*{name}" th:errorclass="is-invalid" class="form-control mb-4"
+										placeholder="Leave a comment here" id="floatingTextarea" />									
+									<label for="floatingTextarea">Nome</label>
+									<small th:errors="*{name}" class="invalid-feedback">Informe o seu nome </small>
+								</div>
+								<div class="form-floating">
+									<input th:field="*{email}" th:errorclass="is-invalid" type="email" class="form-control mb-4"
+										placeholder="Leave a comment here" id="floatingTextarea" />
+									<div th:errors="*{email}" class="invalid-feedback">Error</div>
+									<label for="floatingTextarea">Email</label>
+								</div>
+								<div class="form-floating">
+									<input th:field="*{password}" th:errorclass="is-invalid" type="password" class="form-control mb-4"
+										placeholder="Leave a comment here" id="floatingTextarea" />
+									<div th:errors="*{password}" class="invalid-feedback">Error</div>
+									<label for="floatingTextarea">Password</label>
+								</div>
+								<div class="nav justify-content-center mb-4">
+									<div>
+										<button type="reset" class="btn btn-danger btn-md">Cancelar</button>
+										<button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+									</div>
+								</div>
+								<div class="col-2 mx-auto">
+									Já possui cadastro? <a href="/">Clique aqui</a>
+								</div>
+							</form>
+						</div>
+						</p>
 					</div>
 				</div>
-
-				<div class="nav justify-content-center mb-3">
-					<div>
-						<button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
-						<button type="reset" class="btn btn-danger btn-lg">Cancelar</button>
-					</div>
-				</div>
-
-
-				<div class="col-2 mx-auto">
-					Já possue cadastro? <a href="/">Clique aqui</a>
-				</div>
-
 			</div>
-		</form>
-	</div>
+		</div>
+	</main>
+	<script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

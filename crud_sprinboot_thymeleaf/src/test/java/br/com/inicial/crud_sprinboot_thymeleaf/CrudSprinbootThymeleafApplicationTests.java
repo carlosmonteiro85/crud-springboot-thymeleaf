@@ -1,13 +1,14 @@
 package br.com.inicial.crud_sprinboot_thymeleaf;
 
-import org.junit.jupiter.api.Test;
+import java.util.Locale;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class CrudSprinbootThymeleafApplicationTests {
+import com.github.javafaker.Faker;
 
-	@Test
-	void contextLoads() {
-	}
+@SpringBootTest
+public class CrudSprinbootThymeleafApplicationTests {
+
+	protected static Faker faker = Faker.instance(new Locale("pt", "BR"));
 
 }

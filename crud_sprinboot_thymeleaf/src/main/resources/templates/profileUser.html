@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{base :: head2}">
+<link href="/css/navbar.css" rel="stylesheet">
+</head>
+<body>
+	<nav th:replace="~{base :: nav2}"></nav>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light rounded"
+			aria-label="Twelfth navbar example">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse justify-content-md-center"
+					id="navbarsExample10">
+					<h2 class="mt-3" th:text="${user.name}">Perfil Usuário</h2>
+				</div>
+					<h6 class="mt-3" th:text="${user.role.nome}">Categoria Usuário</h6>
+			</div>
+		</nav>
+		<div>
+			<form th:object="${user}" action="/user/update" method="post">
+				<div class="container">
+					<div class="mb-3 mt-3">
+						<label for="exampleFormControlInput1" class="form-label ">Nome
+						</label> <input th:field="*{name}" type="text" class="form-control"
+							id="exampleFormControlInput1" placeholder="Digite seu nome">
+						<small>Informe o seu nome </small>
+					</div>
+					<div class="mb-3 ">
+						<label for="exampleFormControlTextarea1" class="form-label">Email</label>
+						<input type="email" th:field="*{email}" class="form-control"
+							id="exampleFormControlInput1" placeholder="Digite seu email">
+						<small>Informe o seu email </small>
+					</div>
+					<div class="mb-3 ">
+						<label for="exampleFormControlTextarea1" class="form-label">Senha</label>
+						<input type="password" th:field="${user.password}" class="form-control"
+							id="exampleFormControlInput1" placeholder="Digite sua senha">
+					</div>
+					<div class="mb-3 ">
+						<label for="exampleFormControlTextarea1" class="form-label">Confirme sua senha</label>
+						<input type="password" th:field="*{confirmPass}" class="form-control"
+							 placeholder="Repita sua senha">
+					</div>
+					<div class="form-check form-switch mb-5">
+						<input class="form-check-input" th:field="*{enabled}"
+							type="checkbox" role="switch" id="flexSwitchCheckDefault">
+						<label class="form-check-label" for="flexSwitchCheckDefault">Ativo</label>
+					</div>
+					<input th:field="${user.id}" type="hidden" />
+					<input th:field="${user.role}" type="hidden" />
+					<div class="nav justify-content-center mb-3">
+						<div>
+							<button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+							<button type="reset" class="btn btn-danger btn-md">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

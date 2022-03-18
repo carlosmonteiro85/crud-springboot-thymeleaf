@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+        - mysql-db:/resources/data
+    environment:
+        MYSQL_ROOT_PASSWORD: "asdf"
+        MYSQL_DATABASE: teste-jdbc
+    ports:
+        - "3307:3306"
+volumes:
+  mysql-db: 
+

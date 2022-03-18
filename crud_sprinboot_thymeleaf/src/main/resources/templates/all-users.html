@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{base :: head2}">
+<link href="/css/navbar.css" rel="stylesheet">
+</head>
+<body>
+
+	<main>
+		<nav th:replace="~{base :: nav2}"></nav>
+
+		<!-- 		alertas	 -->
+		<div th:if="${msnAlert}">
+			<div th:replace="~{alerts :: alerta(${msnAlert})}"></div>
+		</div>
+		<div th:if="${msnSucess}">
+			<div th:replace="~{alerts :: sucesso(${msnSucess})}"></div>
+		</div>
+		<div th:if="${msnErro}">
+			<div th:replace="~{alerts :: erro(${msnErro})}"></div>
+		</div>
+		<!-- 		fim alertas	 -->
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light rounded"
+				aria-label="Twelfth navbar example">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse justify-content-md-center"
+						id="navbarsExample10">
+						<h3>Todos usuários</h3>
+					</div>
+				</div>
+			</nav>
+			<div>
+				<div class="mb-1 mt-1">
+					<h4 class="nav justify-content-center mt-3 ">Usuários</h4>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Email</th>
+							<th scope="col">Categoria</th>
+							<th scope="col">Status</th>
+							<th scope="col">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${users}">
+							<th th:text="${user.id}" scope="row">1</th>
+							<td th:text="${user.name}">Nome</td>
+							<td th:text="${user.email}">Email</td>
+							<td th:text="${user.role.nome}">DEFAULT</td>
+							<td th:text="${user.enabled }">ATIVO</td>
+							<td><a class="btn btn-success btn-sm " href=""
+								onclick="preencherInputActive(id)" th:attr="id=${user.id}"
+								data-bs-toggle="modal" data-bs-target="#modalActive"> Ativar</a>
+								<a class="btn btn-warning btn-sm "
+								th:href="@{/user/profile/{id}(id = ${user.id})}"> Ver </a> <a
+								class="btn btn-danger btn-sm " href=""
+								onclick="preencherInputDelete(id)" th:attr="id=${user.id}"
+								data-bs-toggle="modal" data-bs-target="#modalDelete">
+									Deletar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="modalActive" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">Deseja ativar esse usuário?</div>
+					<div class="modal-footer">
+						<form action="/user/actived">
+							<input name="id" type="hidden" id="active" value={id} />
+
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">fechar</button>
+							<button type="submit" class="btn btn-primary">Ativar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Exclusão-->
+		<div class="modal fade" id="modalDelete" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">Deseja Deletar esse usuário?</div>
+					<div class="modal-footer">
+						<form action="/user/delected">
+							<input name="id" type="hidden" id="delected" value={id} />
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Não</button>
+							<button type="submit" class="btn btn-primary">Sim</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function preencherInputActive(id) {
+				document.getElementById("active").value = id
+			}
+		</script>
+		<script type="text/javascript">
+			function preencherInputDelete(id) {
+				document.getElementById("delected").value = id
+				console.log(id)
+			}
+		</script>
+		<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
